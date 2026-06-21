@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>View Passion — Gaming One Stop</title>
+<meta name="description" content="View Passion is a data- and AI-driven mobile game studio. We take original titles from concept to global launch — design, engineering, art, and publishing under one roof." />
+<meta name="theme-color" content="#241a5e" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon32.png" />
+<link rel="apple-touch-icon" href="assets/apple_touch.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="View Passion" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta property="og:title" content="View Passion — Gaming One Stop" />
+<meta property="og:description" content="A data- and AI-driven mobile game studio. Concept to global launch, under one roof." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================== TOKENS ============================== */
+:root{
+  --indigo-1:#1a1146; --indigo-2:#241a5e; --indigo-3:#2c2270;
+  --royal:#3a4ed6; --blue:#2f7fe6; --cyan:#19c6f0; --cyan-soft:#7fe3ff;
+  --silver:#c7d3ee; --silver-2:#9fb0d6; --white:#eef3fb; --spark:#f5d834; --ink:#0d0a26;
+  --bg:#0f0a2e;
+  --grad-hero: radial-gradient(120% 90% at 50% -10%, #3a4ed6 0%, #241a5e 42%, #160f3c 78%, #0f0a2e 100%);
+  --grad-cta: linear-gradient(135deg,#19c6f0 0%,#2f7fe6 45%,#3a4ed6 100%);
+  --grad-text: linear-gradient(180deg,#ffffff 0%, #bfe6ff 100%);
+  --glass: rgba(255,255,255,.055); --glass-2: rgba(255,255,255,.08);
+  --stroke: rgba(159,176,214,.18); --stroke-2: rgba(127,227,255,.35);
+  --r-lg:26px; --r-md:18px; --r-sm:12px;
+  --shadow-cyan: 0 0 0 1px rgba(127,227,255,.25), 0 18px 50px -12px rgba(25,198,240,.45);
+  --shadow-deep: 0 40px 90px -30px rgba(0,0,0,.7);
+  --maxw:1200px;
+  --font-display:'Outfit',system-ui,sans-serif; --font-body:'Inter',system-ui,sans-serif; --font-mono:'JetBrains Mono',monospace;
+  --ease:cubic-bezier(.22,.61,.36,1); --navh:70px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+::selection{background:var(--cyan);color:var(--ink)}
+
+/* ============================== ATMOSPHERE ============================== */
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.aurora span{position:absolute;border-radius:50%;filter:blur(90px);opacity:.45;mix-blend-mode:screen;animation:drift 22s var(--ease) infinite alternate}
+.aurora .a1{width:55vw;height:55vw;left:-12vw;top:-14vw;background:radial-gradient(circle,#3a4ed6,transparent 65%)}
+.aurora .a2{width:48vw;height:48vw;right:-12vw;top:8vh;background:radial-gradient(circle,#19c6f0,transparent 65%);animation-delay:-7s}
+.aurora .a3{width:42vw;height:42vw;left:18vw;bottom:-18vw;background:radial-gradient(circle,#2f7fe6,transparent 65%);animation-delay:-13s}
+@keyframes drift{to{transform:translate3d(6vw,5vh,0) scale(1.15)}}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ============================== LAYOUT PRIMITIVES ============================== */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:2}
+.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan-soft);display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;font-weight:700}
+.eyebrow::before{content:"";width:26px;height:1px;background:linear-gradient(90deg,var(--cyan),transparent)}
+h2.sect{font-family:var(--font-display);font-weight:800;font-size:clamp(30px,4.6vw,52px);line-height:1.04;letter-spacing:-.02em}
+.sect-lead{color:var(--silver);max-width:62ch;margin-top:16px;font-size:clamp(15px,1.6vw,18px)}
+.section-pad{padding:clamp(64px,9vw,110px) 0}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:14px;padding:11px 20px;border-radius:99px;transition:.3s var(--ease);position:relative;overflow:hidden;font-family:var(--font-body);letter-spacing:.01em}
+.btn-primary{background:var(--grad-cta);color:#06122b;box-shadow:0 8px 24px -6px rgba(25,198,240,.6)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px -6px rgba(25,198,240,.8)}
+.btn-ghost{background:var(--glass);border:1px solid var(--stroke);color:#fff}
+.btn-ghost:hover{background:var(--glass-2);border-color:var(--stroke-2);transform:translateY(-2px)}
+.btn svg{width:16px;height:16px}
+
+/* ============================== NAV ============================== */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:.4s var(--ease)}
+.nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-scrolled{backdrop-filter:blur(18px);background:rgba(15,10,46,.78);border-bottom:1px solid var(--stroke)}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--font-display);font-weight:800;font-size:18px;cursor:pointer}
+.brand img{height:34px;width:auto;filter:drop-shadow(0 4px 12px rgba(25,198,240,.5))}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links button{padding:9px 15px;border-radius:99px;font-weight:600;font-size:14px;color:var(--silver);transition:.25s var(--ease);position:relative}
+.nav-links button:hover{color:#fff;background:var(--glass)}
+.nav-links button.active{color:#fff}
+.nav-links button.active::after{content:"";position:absolute;left:15px;right:15px;bottom:3px;height:2px;border-radius:2px;background:var(--grad-cta)}
+.nav-cta{margin-left:8px}
+.burger{display:none;flex-direction:column;gap:5px;padding:10px;border-radius:10px;background:var(--glass);border:1px solid var(--stroke)}
+.burger span{width:20px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+
+/* ============================== ROUTER / PAGES ============================== */
+main{position:relative;z-index:2}
+.page{display:none;animation:pageIn .55s var(--ease)}
+.page.active{display:block}
+@keyframes pageIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.page-head{padding:calc(var(--navh) + 56px) 0 0}
+.page-head .wrap{padding-top:18px}
+
+/* ============================== HERO (HOME) ============================== */
+.hero{min-height:100svh;display:flex;align-items:center;padding-top:calc(var(--navh) + 24px);padding-bottom:54px;background:var(--grad-hero);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;width:100%}
+.hero-tag{font-family:var(--font-mono);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan-soft);font-weight:700;display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border:1px solid var(--stroke-2);border-radius:99px;background:rgba(25,198,240,.07);margin-bottom:24px}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#46e08a;box-shadow:0 0 0 0 rgba(70,224,138,.7);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(70,224,138,.6)}70%{box-shadow:0 0 0 9px rgba(70,224,138,0)}100%{box-shadow:0 0 0 0 rgba(70,224,138,0)}}
+h1.hero-title{font-family:var(--font-display);font-weight:900;font-size:clamp(40px,6.4vw,80px);line-height:.98;letter-spacing:-.03em}
+h1.hero-title .grad{background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1.hero-title .spark{color:var(--spark)}
+.hero-sub{margin-top:22px;font-size:clamp(16px,1.9vw,20px);color:var(--silver);max-width:50ch}
+.hero-actions{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+.hero-stats{margin-top:42px;display:flex;gap:34px;flex-wrap:wrap}
+.hstat .num{font-family:var(--font-display);font-weight:800;font-size:clamp(26px,3.4vw,38px);background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+.hstat .lab{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--silver-2);margin-top:8px}
+
+/* HERO showcase: phone + floating game art */
+.hero-show{position:relative;aspect-ratio:1/1.02;max-width:480px;margin-left:auto;width:100%}
+.hs-phone{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60%;z-index:4;border-radius:30px;overflow:hidden;border:3px solid rgba(127,227,255,.45);box-shadow:var(--shadow-cyan),0 30px 60px -20px rgba(0,0,0,.7);animation:floaty 6s var(--ease) infinite alternate}
+.hs-phone img{width:100%;display:block}
+@keyframes floaty{to{transform:translate(-50%,calc(-50% - 14px))}}
+.hs-float{position:absolute;border-radius:18px;overflow:hidden;border:1px solid var(--stroke-2);box-shadow:0 16px 40px -12px rgba(0,0,0,.6);background:#161045}
+.hs-float img{width:100%;display:block}
+.hs-1{width:33%;top:0;left:-4%;animation:floaty 7s var(--ease) infinite alternate-reverse}
+.hs-2{width:29%;bottom:2%;right:-5%;animation:floaty 8s var(--ease) infinite alternate}
+.hs-badge{position:absolute;z-index:6;display:flex;align-items:center;gap:10px;padding:11px 15px;border-radius:16px;background:rgba(20,16,70,.85);border:1px solid var(--stroke-2);backdrop-filter:blur(8px);box-shadow:var(--shadow-cyan)}
+.hs-badge img{width:38px;height:38px;border-radius:10px}
+.hs-badge .t{font-family:var(--font-display);font-weight:700;font-size:13px;line-height:1.2}
+.hs-badge .s{font-family:var(--font-mono);font-size:10px;color:var(--cyan-soft);letter-spacing:.06em}
+.hs-badge.b1{top:6%;right:4%;animation:floaty 6.5s var(--ease) infinite alternate}
+.hs-badge.b2{bottom:10%;left:-4%;animation:floaty 7.5s var(--ease) infinite alternate-reverse}
+
+/* ============================== MARQUEE ============================== */
+.marquee{border-top:1px solid var(--stroke);border-bottom:1px solid var(--stroke);background:rgba(10,7,30,.5);padding:18px 0;overflow:hidden;position:relative;z-index:3}
+.marquee::before,.marquee::after{content:"";position:absolute;top:0;bottom:0;width:120px;z-index:2}
+.marquee::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+.marquee::after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
+.mq-track{display:flex;gap:54px;width:max-content;animation:mq 32s linear infinite;align-items:center}
+.marquee:hover .mq-track{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-50%)}}
+.mq-item{font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--silver-2);letter-spacing:.02em;display:flex;align-items:center;gap:12px;opacity:.8;transition:.3s;white-space:nowrap}
+.mq-item:hover{opacity:1;color:#fff}
+.mq-item .dot{width:6px;height:6px;border-radius:50%;background:var(--cyan)}
+
+/* ============================== CARDS / USP ============================== */
+.usp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:50px}
+.card{background:var(--glass);border:1px solid var(--stroke);border-radius:var(--r-md);padding:30px 26px;transition:.4s var(--ease);position:relative;overflow:hidden}
+.card::after{content:"";position:absolute;inset:0;background:radial-gradient(220px 160px at var(--mx,50%) var(--my,0%),rgba(25,198,240,.14),transparent 70%);opacity:0;transition:.4s}
+.card:hover{transform:translateY(-6px);border-color:var(--stroke-2);background:var(--glass-2)}
+.card:hover::after{opacity:1}
+.card .ic{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(25,198,240,.18),rgba(58,78,214,.18));border:1px solid var(--stroke-2);margin-bottom:18px}
+.card .ic svg{width:24px;height:24px;stroke:var(--cyan-soft);fill:none;stroke-width:1.7}
+.card h3{font-family:var(--font-display);font-weight:700;font-size:19px;margin-bottom:9px}
+.card p{color:var(--silver);font-size:14.5px}
+
+/* ============================== HOME services grid (one-stop) ============================== */
+.svc-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:46px}
+.svc{background:var(--glass);border:1px solid var(--stroke);border-radius:var(--r-sm);padding:20px 14px;text-align:center;transition:.35s var(--ease)}
+.svc:hover{transform:translateY(-5px);border-color:var(--stroke-2);background:var(--glass-2)}
+.svc .si{width:42px;height:42px;margin:0 auto 12px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(25,198,240,.16),rgba(58,78,214,.16));border:1px solid var(--stroke-2)}
+.svc .si svg{width:22px;height:22px;stroke:var(--cyan-soft);fill:none;stroke-width:1.7}
+.svc .sl{font-family:var(--font-display);font-weight:700;font-size:13.5px}
+
+/* ============================== PIPELINE ============================== */
+.pipe{margin-top:56px;position:relative}
+.pipe-rail{position:absolute;top:44px;left:7%;right:7%;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),var(--royal),transparent);opacity:.5}
+.pipe-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative}
+.pstep{text-align:center}
+.pnum{width:88px;height:88px;margin:0 auto 22px;border-radius:50%;display:grid;place-items:center;position:relative;background:radial-gradient(circle at 30% 25%,#2c2270,#160f3c);border:1px solid var(--stroke-2);font-family:var(--font-display);font-weight:800;font-size:30px;color:#fff;box-shadow:var(--shadow-cyan)}
+.pnum .mono{position:absolute;bottom:-6px;right:-6px;width:30px;height:30px;border-radius:9px;background:var(--grad-cta);display:grid;place-items:center;font-family:var(--font-mono);font-size:12px;font-weight:700;color:#06122b}
+.pstep h4{font-family:var(--font-display);font-weight:700;font-size:18px}
+.pstep .tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan-soft);margin:6px 0 12px}
+.pstep p{color:var(--silver);font-size:14px;max-width:30ch;margin:0 auto}
+
+/* ============================== GAME PAGE ============================== */
+.game-hero{position:relative;border-radius:var(--r-lg);overflow:hidden;margin-top:8px;border:1px solid var(--stroke-2);box-shadow:var(--shadow-deep)}
+.game-hero img.ka{width:100%;display:block;aspect-ratio:16/9;object-fit:cover}
+.game-hero .gh-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,6,30,.85) 0%,rgba(8,6,30,.35) 45%,transparent 70%);display:flex;align-items:center}
+.game-hero .gh-inner{padding:clamp(24px,4vw,54px);max-width:560px}
+.game-hero .gh-inner img.wm{width:min(320px,70%);margin-bottom:18px;filter:drop-shadow(0 6px 20px rgba(0,0,0,.5))}
+.game-hero .gh-inner p{color:#dfe7f7;font-size:clamp(14px,1.7vw,17px);text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.game-hero .gh-actions{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+
+.specs{margin-top:0;display:grid;gap:1px;background:var(--stroke);border:1px solid var(--stroke);border-radius:var(--r-md);overflow:hidden}
+.spec{display:grid;grid-template-columns:130px 1fr;background:rgba(15,10,46,.6);padding:16px 20px;align-items:center;transition:.3s}
+.spec:hover{background:rgba(25,198,240,.06)}
+.spec .k{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--silver-2)}
+.spec .v{font-weight:600;font-size:14.5px}
+.spec .v b{color:var(--cyan-soft)}
+.badge{display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:5px 11px;border-radius:99px;background:rgba(70,224,138,.12);color:#7ff0b0;border:1px solid rgba(70,224,138,.3)}
+.game-split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:54px}
+
+/* feature panels */
+.feat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:46px}
+.feat{border-radius:var(--r-md);overflow:hidden;border:1px solid var(--stroke);background:#161045;transition:.4s var(--ease);position:relative}
+.feat img{width:100%;display:block;transition:.5s var(--ease)}
+.feat:hover{transform:translateY(-8px);border-color:var(--stroke-2);box-shadow:var(--shadow-cyan);z-index:2}
+.feat:hover img{transform:scale(1.05)}
+
+/* monetization */
+.mon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:46px}
+.mon{background:var(--glass);border:1px solid var(--stroke);border-radius:var(--r-md);padding:24px 20px;transition:.4s var(--ease)}
+.mon:hover{transform:translateY(-5px);border-color:var(--stroke-2);background:var(--glass-2)}
+.mon .tier{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--spark);font-weight:700;margin-bottom:14px}
+.mon h4{font-family:var(--font-display);font-weight:700;font-size:17px;margin-bottom:8px}
+.mon p{font-size:13.5px;color:var(--silver)}
+.mon.core{background:linear-gradient(160deg,rgba(58,78,214,.28),rgba(25,198,240,.1));border-color:var(--stroke-2)}
+
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:46px}
+.rphase{background:var(--glass);border:1px solid var(--stroke);border-radius:var(--r-md);padding:22px 18px;transition:.4s var(--ease);position:relative}
+.rphase:hover{transform:translateY(-5px);border-color:var(--stroke-2);background:var(--glass-2)}
+.rphase .rp{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;color:var(--cyan-soft);font-weight:700;margin-bottom:6px}
+.rphase .rt{font-family:var(--font-display);font-weight:700;font-size:15px;margin-bottom:4px}
+.rphase .rd{font-family:var(--font-mono);font-size:10px;color:var(--silver-2);margin-bottom:12px}
+.rphase ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.rphase li{font-size:12.5px;color:var(--silver);padding-left:14px;position:relative}
+.rphase li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--cyan)}
+.rphase.last{background:linear-gradient(160deg,rgba(245,216,52,.16),rgba(58,78,214,.12));border-color:rgba(245,216,52,.3)}
+.rphase.last .rp{color:var(--spark)}
+
+/* ============================== AI CASE STUDIES ============================== */
+.cs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:48px}
+.cs{background:var(--glass);border:1px solid var(--stroke);border-radius:var(--r-md);padding:30px;transition:.4s var(--ease)}
+.cs:hover{border-color:var(--stroke-2);background:var(--glass-2);transform:translateY(-5px)}
+.cs .csk{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan-soft);font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.cs h3{font-family:var(--font-display);font-weight:700;font-size:21px;margin-bottom:12px}
+.cs p{color:var(--silver);font-size:14.5px;margin-bottom:18px}
+.cs .metrics{display:flex;gap:24px;flex-wrap:wrap;border-top:1px solid var(--stroke);padding-top:18px}
+.cs .m .mv{font-family:var(--font-display);font-weight:800;font-size:24px;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cs .m .ml{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--silver-2);margin-top:4px}
+.tagrow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tag-mono{font-family:var(--font-mono);font-size:11px;padding:5px 11px;border-radius:99px;background:rgba(25,198,240,.08);border:1px solid var(--stroke);color:var(--cyan-soft)}
+
+/* ============================== WORKS ============================== */
+.works-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px;margin-top:46px}
+.work{border-radius:var(--r-md);overflow:hidden;position:relative;border:1px solid var(--stroke);transition:.45s var(--ease);background:#161045}
+.work img{width:100%;height:100%;object-fit:cover;transition:.6s var(--ease)}
+.work::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(8,6,30,.85));opacity:.65;transition:.4s}
+.work:hover{border-color:var(--stroke-2);transform:translateY(-4px)}
+.work:hover img{transform:scale(1.08)}
+.work:hover::after{opacity:.4}
+.work .wtag{position:absolute;left:14px;bottom:13px;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#fff;z-index:2;font-weight:700;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+.w-big{grid-column:span 2;grid-row:span 2}
+.w-tall{grid-row:span 2}
+.w-wide{grid-column:span 2}
+
+/* customers */
+.cust-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.cchip{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:14px;background:var(--glass);border:1px solid var(--stroke);font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--silver);transition:.3s var(--ease)}
+.cchip:hover{color:#fff;border-color:var(--stroke-2);background:var(--glass-2);transform:translateY(-3px)}
+.cchip .sq{width:10px;height:10px;border-radius:3px;background:var(--spark)}
+.ar-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.ar-card{border-radius:var(--r-md);overflow:hidden;border:1px solid var(--stroke);position:relative}
+.ar-card img{width:100%;aspect-ratio:5/4;object-fit:cover;transition:.5s}
+.ar-card:hover img{transform:scale(1.06)}
+.ar-card .arc{position:absolute;left:14px;bottom:12px;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;text-shadow:0 2px 8px #000}
+
+/* ============================== TEAM ============================== */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px}
+.member{background:var(--glass);border:1px solid var(--stroke);border-radius:var(--r-lg);overflow:hidden;transition:.4s var(--ease)}
+.member:hover{transform:translateY(-6px);border-color:var(--stroke-2)}
+.member .ph{aspect-ratio:1;overflow:hidden;background:linear-gradient(160deg,#2c2270,#160f3c)}
+.member .ph img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.member:hover .ph img{transform:scale(1.05)}
+.member .body{padding:22px}
+.member .nm{font-family:var(--font-display);font-weight:700;font-size:19px}
+.member .role{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan-soft);margin:5px 0 14px;font-weight:700}
+.member .skills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.member .skills span{font-size:11px;padding:4px 10px;border-radius:99px;background:rgba(255,255,255,.06);border:1px solid var(--stroke);color:var(--silver)}
+.member p{font-size:13px;color:var(--silver)}
+.team-note{margin-top:30px;text-align:center;font-family:var(--font-mono);font-size:12.5px;letter-spacing:.06em;color:var(--silver-2)}
+.team-note b{color:var(--cyan-soft)}
+.studio-photos{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:50px}
+.studio-photos figure{border-radius:var(--r-md);overflow:hidden;border:1px solid var(--stroke);position:relative}
+.studio-photos img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:.5s}
+.studio-photos figure:hover img{transform:scale(1.04)}
+.studio-photos figcaption{position:absolute;left:14px;bottom:12px;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:#fff;text-shadow:0 2px 8px #000}
+
+/* ============================== PARTNER / CTA ============================== */
+.collab{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:46px}
+.copp{background:var(--glass);border:1px solid var(--stroke);border-radius:var(--r-lg);padding:34px 28px;text-align:center;transition:.4s var(--ease);cursor:pointer}
+.copp:hover{transform:translateY(-6px);border-color:var(--stroke-2);background:var(--glass-2)}
+.copp .ci{width:70px;height:70px;margin:0 auto 20px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 30% 25%,#2c2270,#160f3c);border:1px solid var(--stroke-2);box-shadow:var(--shadow-cyan)}
+.copp .ci svg{width:32px;height:32px;stroke:var(--cyan-soft);fill:none;stroke-width:1.6}
+.copp h4{font-family:var(--font-display);font-weight:700;font-size:20px;margin-bottom:8px}
+.copp p{color:var(--silver);font-size:14px}
+.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px}
+.cline{display:flex;align-items:center;gap:16px;padding:20px 22px;border-radius:var(--r-md);background:var(--glass);border:1px solid var(--stroke);transition:.3s}
+.cline:hover{border-color:var(--stroke-2);background:var(--glass-2)}
+.cline .ci{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(25,198,240,.16),rgba(58,78,214,.16));border:1px solid var(--stroke-2);flex-shrink:0}
+.cline .ci svg{width:22px;height:22px;stroke:var(--cyan-soft);fill:none;stroke-width:1.7}
+.cline .cl{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--silver-2)}
+.cline .cv{font-weight:600;font-size:15px;margin-top:2px}
+.bigcta{margin:clamp(60px,8vw,100px) 0 0;text-align:center;padding:clamp(50px,7vw,84px) 30px;border-radius:var(--r-lg);position:relative;overflow:hidden;background:linear-gradient(150deg,rgba(58,78,214,.4),rgba(25,198,240,.16));border:1px solid var(--stroke-2)}
+.bigcta::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 90% at 50% 0%,rgba(25,198,240,.3),transparent 70%)}
+.bigcta h2{font-family:var(--font-display);font-weight:900;font-size:clamp(28px,4.6vw,52px);line-height:1.02;letter-spacing:-.02em;position:relative}
+.bigcta p{color:var(--silver);max-width:50ch;margin:18px auto 30px;position:relative}
+.bigcta .hero-actions{justify-content:center;position:relative}
+
+/* ============================== FOOTER ============================== */
+footer{border-top:1px solid var(--stroke);margin-top:clamp(64px,8vw,110px);padding:58px 0 38px;position:relative;z-index:2}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.foot-brand img{height:42px;margin-bottom:18px}
+.foot-brand p{color:var(--silver);max-width:34ch;font-size:14px}
+.foot-col h5{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--silver-2);margin-bottom:16px}
+.foot-col button,.foot-col a{display:block;color:var(--silver);font-size:14.5px;padding:6px 0;transition:.25s;text-align:left}
+.foot-col button:hover,.foot-col a:hover{color:var(--cyan-soft);transform:translateX(3px)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:26px;border-top:1px solid var(--stroke);flex-wrap:wrap}
+.foot-bottom small{color:var(--silver-2);font-size:12.5px}
+.socials{display:flex;gap:10px}
+.socials a{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--glass);border:1px solid var(--stroke);transition:.3s}
+.socials a:hover{border-color:var(--cyan);background:var(--glass-2);transform:translateY(-3px)}
+.socials svg{width:17px;height:17px;fill:var(--silver)}
+.socials a:hover svg{fill:var(--cyan-soft)}
+
+/* ============================== MODAL ============================== */
+.modal-veil{position:fixed;inset:0;z-index:100;background:rgba(8,6,26,.7);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:.35s var(--ease)}
+.modal-veil.open{opacity:1;pointer-events:auto}
+.modal{width:min(560px,100%);background:linear-gradient(165deg,#201752,#140e3a);border:1px solid var(--stroke-2);border-radius:var(--r-lg);padding:38px;position:relative;box-shadow:var(--shadow-deep);transform:translateY(24px) scale(.97);transition:.4s var(--ease);max-height:90vh;overflow-y:auto}
+.modal-veil.open .modal{transform:none}
+.modal .x{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--glass);border:1px solid var(--stroke);transition:.3s}
+.modal .x:hover{background:var(--glass-2);transform:rotate(90deg)}
+.modal .x svg{width:16px;height:16px;stroke:#fff;stroke-width:2}
+.modal .eyebrow{margin-bottom:10px}
+.modal h3{font-family:var(--font-display);font-weight:800;font-size:26px;letter-spacing:-.01em}
+.modal .msub{color:var(--silver);font-size:14.5px;margin:10px 0 26px}
+.field{margin-bottom:16px}
+.field label{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--silver-2);margin-bottom:7px}
+.field input,.field textarea,.field select{width:100%;background:rgba(8,6,26,.5);border:1px solid var(--stroke);border-radius:12px;padding:13px 15px;color:#fff;font-family:var(--font-body);font-size:14.5px;transition:.3s;outline:none}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(25,198,240,.15)}
+.field textarea{resize:vertical;min-height:96px}
+.field select option{background:#1a1146}
+.modal .btn-primary{width:100%;justify-content:center;margin-top:6px;padding:15px}
+.modal-direct{margin-top:22px;padding-top:22px;border-top:1px solid var(--stroke);display:flex;gap:20px;flex-wrap:wrap}
+.modal-direct a{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--silver);transition:.25s}
+.modal-direct a:hover{color:var(--cyan-soft)}
+.modal-direct svg{width:16px;height:16px;stroke:var(--cyan-soft);fill:none;stroke-width:1.7}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);z-index:120;background:linear-gradient(135deg,#19c6f0,#3a4ed6);color:#06122b;font-weight:700;padding:14px 24px;border-radius:99px;box-shadow:0 14px 40px -10px rgba(25,198,240,.6);transition:.45s var(--ease);font-size:14px}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ============================== REVEAL ============================== */
+.reveal{opacity:0;transform:translateY(28px);transition:.7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.07s}.reveal.d2{transition-delay:.14s}.reveal.d3{transition-delay:.21s}.reveal.d4{transition-delay:.28s}.reveal.d5{transition-delay:.35s}
+
+/* ============================== RESPONSIVE ============================== */
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-show{max-width:420px;margin:0 auto}
+  .game-split{grid-template-columns:1fr;gap:32px}
+  .usp-grid,.cs-grid,.team-grid,.collab{grid-template-columns:1fr 1fr}
+  .svc-grid{grid-template-columns:repeat(3,1fr)}
+  .mon-grid{grid-template-columns:1fr 1fr}
+  .works-grid{grid-template-columns:repeat(2,1fr)}
+  .feat-grid{grid-template-columns:repeat(3,1fr)}
+  .road{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:720px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .nav-links.mobile-open{display:flex;position:absolute;top:64px;left:16px;right:16px;flex-direction:column;align-items:stretch;background:rgba(20,14,58,.98);backdrop-filter:blur(20px);border:1px solid var(--stroke);border-radius:18px;padding:14px;gap:4px}
+  .nav-links.mobile-open button{padding:13px 16px;text-align:left}
+  .nav-links.mobile-open button.active::after{display:none}
+  .nav-cta{display:none}
+  .usp-grid,.cs-grid,.team-grid,.collab,.mon-grid{grid-template-columns:1fr}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .pipe-steps{grid-template-columns:1fr;gap:34px}
+  .pipe-rail{display:none}
+  .works-grid{grid-template-columns:1fr 1fr;grid-auto-rows:150px}
+  .w-big{grid-column:span 2;grid-row:span 1}
+  .feat-grid{grid-template-columns:1fr 1fr}
+  .road{grid-template-columns:1fr}
+  .ar-row{grid-template-columns:1fr}
+  .studio-photos{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr;gap:30px}
+  .hero-stats{gap:22px}
+  .game-hero .gh-overlay{background:linear-gradient(180deg,rgba(8,6,30,.45),rgba(8,6,30,.92))}
+  .modal{padding:28px 22px}
+  .hstat{flex:1 1 40%}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<div class="grain"></div>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="brand" data-go="home"><img src="assets/vp_logo.png" alt="View Passion" /></div>
+    <nav class="nav-links" id="navLinks">
+      <button data-go="home">Home</button>
+      <button data-go="studio">Studio</button>
+      <button data-go="game">Cat vs Cucumber</button>
+      <button data-go="works">Works</button>
+      <button data-go="team">Team</button>
+      <button data-go="partner">Partner</button>
+    </nav>
+    <button class="btn btn-primary nav-cta" data-open-modal>
+      Submit your game
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+<!-- ============================================================= -->
+<!-- ===== PAGE: HOME ===== -->
+<!-- ============================================================= -->
+<section class="page active" id="page-home">
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-tag"><span class="live-dot"></span> Gaming One Stop · Studio &amp; Publisher</div>
+          <h1 class="hero-title">
+            <span class="grad">One studio takes</span><br>
+            your game from<br>
+            <span class="grad">idea to the</span> world<span class="spark">.</span>
+          </h1>
+          <p class="hero-sub">View Passion is a data- and AI-driven mobile game studio. Design, engineering, art, and publishing under one roof — we build original titles, prove them with players, and scale them worldwide.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" data-go="game">
+              Meet Cat vs Cucumber
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <button class="btn btn-ghost" data-go="studio">How we work</button>
+          </div>
+          <div class="hero-stats">
+            <div class="hstat"><div class="num" data-count="100000" data-suffix="+">0</div><div class="lab">Pre-registrations</div></div>
+            <div class="hstat"><div class="num" data-count="6" data-suffix="">0</div><div class="lab">In-house disciplines</div></div>
+            <div class="hstat"><div class="num" data-count="49" data-suffix="%">0</div><div class="lab">Creative CTR lift</div></div>
+          </div>
+        </div>
+
+        <!-- showcase -->
+        <div class="hero-show">
+          <div class="hs-float hs-1"><img src="assets/gp_hub.jpg" alt="Cat vs Cucumber hub"/></div>
+          <div class="hs-phone"><img src="assets/gp_battle.jpg" alt="Cat vs Cucumber gameplay"/></div>
+          <div class="hs-float hs-2"><img src="assets/gp_cards.jpg" alt="Roguelike card pick"/></div>
+          <div class="hs-badge b1"><img src="assets/cat_app_icon.png" alt="App icon"/><div><div class="t">Cat vs Cucumber</div><div class="s">Live · Vietnam</div></div></div>
+          <div class="hs-badge b2"><div><div class="t">100,000+</div><div class="s">pre-registrations</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- marquee -->
+  <div class="marquee"><div class="mq-track" id="mqTrack"></div></div>
+
+  <!-- one-stop services -->
+  <section class="section-pad">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="eyebrow">Gaming One Stop</span>
+        <h2 class="sect">Everything a hit needs,<br>under one roof.</h2>
+        <p class="sect-lead">No hand-offs between agencies, no lost context. Six disciplines work side by side — from the first concept sketch to live operations after global launch.</p>
+      </div>
+      <div class="svc-grid reveal d1">
+        <div class="svc"><div class="si"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 .9-4.5 4.4 1 6.2L12 17l-5.5 2.5 1-6.2L3 8.9 9 8z"/></svg></div><div class="sl">Game Design</div></div>
+        <div class="svc"><div class="si"><svg viewBox="0 0 24 24"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg></div><div class="sl">Engineering</div></div>
+        <div class="svc"><div class="si"><svg viewBox="0 0 24 24"><path d="M12 19l7-7-4-4-7 7v4z"/><path d="M14 6l4 4"/></svg></div><div class="sl">Art &amp; Animation</div></div>
+        <div class="svc"><div class="si"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 9h16"/></svg></div><div class="sl">Publishing</div></div>
+        <div class="svc"><div class="si"><svg viewBox="0 0 24 24"><path d="M3 3v18h18M7 14l3-4 3 3 5-7"/></svg></div><div class="sl">Data &amp; AI</div></div>
+        <div class="svc"><div class="si"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg></div><div class="sl">Marketing &amp; UA</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- data-driven focus + pipeline -->
+  <section class="section-pad" style="padding-top:0">
+    <div class="wrap">
+      <div class="usp-grid">
+        <div class="card reveal d1">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 3 5-7"/></svg></div>
+          <h3>Fun, measured</h3>
+          <p>Engagement analytics tell us what players actually enjoy — retention, session depth, and progression guide what we build next.</p>
+        </div>
+        <div class="card reveal d2">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 .9-4.5 4.4 1 6.2L12 17l-5.5 2.5 1-6.2L3 8.9 9 8z"/></svg></div>
+          <h3>Strategy, tuned by AI</h3>
+          <p>Economy and balance are simulated and refined with a multi-agent AI system — thousands of test runs, not guesswork.</p>
+        </div>
+        <div class="card reveal d3">
+          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg></div>
+          <h3>Built for worldwide</h3>
+          <p>Localization and LiveOps are shaped by real market and player data, so a launch lands the same in every region we ship to.</p>
+        </div>
+      </div>
+
+      <div class="pipe reveal">
+        <div class="pipe-rail"></div>
+        <div class="pipe-steps">
+          <div class="pstep"><div class="pnum">01<span class="mono">R</span></div><h4>Research</h4><div class="tag">Validate the market</div><p>Competitor intelligence and player demand prove a concept before a line of code.</p></div>
+          <div class="pstep"><div class="pnum">02<span class="mono">P</span></div><h4>Prove</h4><div class="tag">Launch the MVP</div><p>A focused soft-launch tests core loops with real players and live retention data.</p></div>
+          <div class="pstep"><div class="pnum">03<span class="mono">O</span></div><h4>Optimize</h4><div class="tag">Improve &amp; scale</div><p>Live data, player insights, and AI tuning drive the roadmap toward global release.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- flagship teaser -->
+  <section class="section-pad" style="padding-top:0">
+    <div class="wrap">
+      <div class="game-hero reveal">
+        <img class="ka" src="assets/cvc_keyart.jpg" alt="Cat vs Cucumber key art"/>
+        <div class="gh-overlay"><div class="gh-inner">
+          <img class="wm" src="assets/cvc_wordmark.png" alt="Cat vs Cucumber"/>
+          <p>Lead a team of cat heroes against the invading cucumber army — a hybrid-casual blend of tower defense, spin idle, and roguelike. Live soft-launch now in Vietnam.</p>
+          <div class="gh-actions">
+            <button class="btn btn-primary" data-go="game">Explore the game
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <button class="btn btn-ghost" data-open-modal data-subject="Cat vs Cucumber — demo access">Request demo</button>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============================================================= -->
+<!-- ===== PAGE: STUDIO ===== -->
+<!-- ============================================================= -->
+<section class="page" id="page-studio">
+  <div class="page-head"><div class="wrap reveal">
+    <span class="eyebrow">Who we are</span>
+    <h2 class="sect">A one-stop game studio,<br>powered by data &amp; AI.</h2>
+    <p class="sect-lead">View Passion combines design, engineering, art, and publishing in a single team — taking original game ideas from concept to global launch, then optimizing them with live data, player insights, and multi-agent AI.</p>
+  </div></div>
+
+  <section class="section-pad" style="padding-top:48px">
+    <div class="wrap">
+      <div class="studio-photos reveal">
+        <figure><img src="assets/office_team.jpg" alt="View Passion studio"/><figcaption>The studio · sea-view HQ</figcaption></figure>
+        <figure><img src="assets/office_dev.jpg" alt="Engineering at work"/><figcaption>Engineering in motion</figcaption></figure>
+      </div>
+
+      <div style="margin-top:64px" class="reveal">
+        <span class="eyebrow">How we work · Case studies</span>
+        <h2 class="sect">AI in the pipeline,<br>not just the pitch.</h2>
+        <p class="sect-lead">We deploy multi-agent AI systems across the whole studio — code, art, balance, and user acquisition — to compress timelines and cut errors, while artists and engineers stay in creative control.</p>
+      </div>
+      <div class="cs-grid">
+        <div class="cs reveal d1">
+          <div class="csk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg> Game development</div>
+          <h3>Multi-agent build &amp; balance</h3>
+          <p>A Claude-powered multi-agent team in Unity autonomously handles pattern-based coding, review, and debugging — then simulates player personas to test and refine game balance at scale.</p>
+          <div class="tagrow"><span class="tag-mono">Unity</span><span class="tag-mono">Multi-agent</span><span class="tag-mono">Miro + MCP</span><span class="tag-mono">Data simulation</span></div>
+          <div class="metrics"><div class="m"><div class="mv">Bug-free</div><div class="ml">builds</div></div><div class="m"><div class="mv">Scale</div><div class="ml">rapid iteration</div></div><div class="m"><div class="mv">Edge cases</div><div class="ml">exploit discovery</div></div></div>
+        </div>
+        <div class="cs reveal d2">
+          <div class="csk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v14H3z"/><path d="M3 21h18"/></svg> Website &amp; systems</div>
+          <h3>From design to shipped code</h3>
+          <p>AI handles blueprinting, information architecture, and rapid UI prototyping — paired with rigorous UX auditing for accessibility. We migrated SSR → CSR and stripped redundant code aggressively.</p>
+          <div class="tagrow"><span class="tag-mono">CSR migration</span><span class="tag-mono">Figma MCP</span><span class="tag-mono">API generation</span><span class="tag-mono">QA simulation</span></div>
+          <div class="metrics"><div class="m"><div class="mv">3,800+</div><div class="ml">lines debloated</div></div><div class="m"><div class="mv">SSR→CSR</div><div class="ml">architecture</div></div></div>
+        </div>
+        <div class="cs reveal d1">
+          <div class="csk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg> Marketing &amp; UA</div>
+          <h3>Competitor-intelligent campaigns</h3>
+          <p>We connect the Meta Ads Library API to AI to analyze competitor creatives, reverse-engineer strategy, and auto-generate ready-to-deploy campaign setups — then test modular creative variants.</p>
+          <div class="tagrow"><span class="tag-mono">Meta Ads API</span><span class="tag-mono">Creative testing</span><span class="tag-mono">Media buying</span></div>
+          <div class="metrics"><div class="m"><div class="mv">+49.4%</div><div class="ml">clicks, variant B</div></div><div class="m"><div class="mv">Modular</div><div class="ml">creative testing</div></div></div>
+        </div>
+        <div class="cs reveal d2">
+          <div class="csk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7-4-4-7 7v4z"/><path d="M14 6l4 4"/></svg> Art development</div>
+          <h3>AI reference, human paint-over</h3>
+          <p>AI generates concept art, characters, environments and props from our own asset library. Artists paint over and refine — compressing design rounds from weeks to days, with VFX and animation references built in.</p>
+          <div class="tagrow"><span class="tag-mono">Concept &amp; mood</span><span class="tag-mono">Paint-over</span><span class="tag-mono">Sprite + 3D turntable</span></div>
+          <div class="metrics"><div class="m"><div class="mv">Weeks→Days</div><div class="ml">design rounds</div></div><div class="m"><div class="mv">Full 2D/3D</div><div class="ml">in-house pipeline</div></div></div>
+        </div>
+      </div>
+
+      <div class="bigcta reveal">
+        <h2>Have a game that deserves the world?</h2>
+        <p>We partner with developers, publishers, and brands to take great games global. Let's talk about yours.</p>
+        <div class="hero-actions"><button class="btn btn-primary" data-open-modal>Start a conversation
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============================================================= -->
+<!-- ===== PAGE: GAME (Cat vs Cucumber) ===== -->
+<!-- ============================================================= -->
+<section class="page" id="page-game">
+  <div class="page-head"><div class="wrap reveal">
+    <span class="eyebrow">Flagship title</span>
+    <div class="game-hero">
+      <img class="ka" src="assets/cvc_keyart.jpg" alt="Cat vs Cucumber key art"/>
+      <div class="gh-overlay"><div class="gh-inner">
+        <img class="wm" src="assets/cvc_wordmark.png" alt="Cat vs Cucumber"/>
+        <p>Lead a team of cat heroes to defend against the invading cucumber army. Spin to deploy, merge to power up, and pick roguelike cards to survive.</p>
+        <div class="gh-actions">
+          <button class="btn btn-primary" data-open-modal data-subject="Cat vs Cucumber — demo access">Request demo access
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <button class="btn btn-ghost" data-open-modal data-subject="Cat vs Cucumber — watch gameplay">Watch gameplay</button>
+        </div>
+      </div></div>
+    </div>
+  </div></div>
+
+  <section class="section-pad" style="padding-top:46px">
+    <div class="wrap">
+      <!-- specs + phone -->
+      <div class="game-split">
+        <div class="reveal">
+          <div class="specs">
+            <div class="spec"><div class="k">Genre</div><div class="v">Hybrid-Casual · <b>Tower Defense × Spin Idle × Roguelike</b></div></div>
+            <div class="spec"><div class="k">Platform</div><div class="v">iOS &amp; Android — mobile devices</div></div>
+            <div class="spec"><div class="k">Status</div><div class="v"><span class="badge"><span class="live-dot"></span> MVP · Live soft-launch in Vietnam</span></div></div>
+            <div class="spec"><div class="k">Reception</div><div class="v"><b>100,000+</b> pre-registrations worldwide</div></div>
+          </div>
+        </div>
+        <div class="reveal d2" style="display:flex;justify-content:center">
+          <div class="hs-phone" style="position:relative;transform:none;left:auto;top:auto;width:min(280px,80%);animation:floaty 6s var(--ease) infinite alternate">
+            <img src="assets/gp_defense.jpg" alt="Cat vs Cucumber tower defense"/>
+          </div>
+        </div>
+      </div>
+
+      <!-- feature panels -->
+      <div style="margin-top:64px" class="reveal">
+        <span class="eyebrow">Core loop</span>
+        <h2 class="sect">Six ways to play.</h2>
+        <p class="sect-lead">Every session blends fast decisions with long-term strategy — the hybrid-casual formula that keeps players coming back.</p>
+      </div>
+      <div class="feat-grid">
+        <div class="feat reveal d1"><img src="assets/feat_spin.jpg" alt="Spin to win"/></div>
+        <div class="feat reveal d1"><img src="assets/feat_merge.jpg" alt="Merge and unleash"/></div>
+        <div class="feat reveal d2"><img src="assets/feat_path.jpg" alt="Choose your path"/></div>
+        <div class="feat reveal d2"><img src="assets/feat_tower.jpg" alt="Defend your tower"/></div>
+        <div class="feat reveal d3"><img src="assets/feat_boss.jpg" alt="Conquer mighty bosses"/></div>
+        <div class="feat reveal d3"><img src="assets/feat_army.jpg" alt="Collect your cat army"/></div>
+      </div>
+
+      <!-- monetization -->
+      <div style="margin-top:64px" class="reveal">
+        <span class="eyebrow">Monetization model</span>
+        <h2 class="sect">Hybrid-casual economics</h2>
+        <p class="sect-lead">Three revenue engines working together: in-app purchases at the core, ad monetization for reach, and IP &amp; brand collaborations for upside.</p>
+      </div>
+      <div class="mon-grid">
+        <div class="mon core reveal d1"><div class="tier">Core revenue</div><h4>In-App Purchases</h4><p>Gacha, starter packs, limited bundles, Battle Pass, and cosmetics.</p></div>
+        <div class="mon reveal d2"><div class="tier">Reach</div><h4>Ad Monetization</h4><p>Rewarded video, ad-skip &amp; auto-play boosts.</p></div>
+        <div class="mon reveal d3"><div class="tier">Upside</div><h4>IP &amp; Brand Collab</h4><p>Character licensing and in-game crossover events.</p></div>
+        <div class="mon reveal d4"><div class="tier">Retention</div><h4>Battle Pass &amp; LiveOps</h4><p>Seasonal content and events that keep players returning.</p></div>
+      </div>
+
+      <!-- roadmap -->
+      <div style="margin-top:64px" class="reveal">
+        <span class="eyebrow">Product roadmap</span>
+        <h2 class="sect">Research → Prove → Optimize</h2>
+        <p class="sect-lead">From a stable data foundation today to a full global release — each phase expands content, depth, and reach.</p>
+      </div>
+      <div class="road">
+        <div class="rphase reveal d1"><div class="rp">Phase 1</div><div class="rt">Stability &amp; Data</div><div class="rd">Mid–Late June</div><ul><li>Improve tutorial flow</li><li>Fix IAP configuration</li><li>Track stage progression</li><li>Measure Day-1 retention</li></ul></div>
+        <div class="rphase reveal d2"><div class="rp">Phase 2</div><div class="rt">Core Content</div><div class="rd">Late August</div><ul><li>Building System MVP</li><li>Chapters 1–2</li><li>Gachapon UX redesign</li><li>+18 Cat Heroes</li></ul></div>
+        <div class="rphase reveal d3"><div class="rp">Phase 3</div><div class="rt">Competitive Layer</div><div class="rd">Late September</div><ul><li>PvP Mode</li><li>+8 Special Card Skills</li><li>New banner</li><li>More strategic variety</li></ul></div>
+        <div class="rphase reveal d4"><div class="rp">Phase 4</div><div class="rt">World &amp; Hero Growth</div><div class="rd">Late November</div><ul><li>Cuke Bomb Mode</li><li>Expand game content</li><li>+18 Cat Heroes</li><li>New banner</li></ul></div>
+        <div class="rphase last reveal d5"><div class="rp">Phase 5</div><div class="rt">Full Release</div><div class="rd">Early February</div><ul><li>Full Building System</li><li>Official website</li><li>Influencer &amp; affiliate</li><li>Global release prep</li></ul></div>
+      </div>
+
+      <div class="bigcta reveal">
+        <h2>Want Cat vs Cucumber in your market?</h2>
+        <p>We're looking for publishing and UA partners to scale the title from soft-launch to global.</p>
+        <div class="hero-actions"><button class="btn btn-primary" data-open-modal data-subject="Publishing partnership">Partner with us
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============================================================= -->
+<!-- ===== PAGE: WORKS ===== -->
+<!-- ============================================================= -->
+<section class="page" id="page-works">
+  <div class="page-head"><div class="wrap reveal">
+    <span class="eyebrow">Studio track record</span>
+    <h2 class="sect">A full 2D/3D pipeline,<br>shipped end-to-end.</h2>
+    <p class="sect-lead">Concept, characters, environments, splash art, and animation — produced in-house across mobile titles, MOBA-scale art, brand collaborations, and platform integrations.</p>
+  </div></div>
+
+  <section class="section-pad" style="padding-top:46px">
+    <div class="wrap">
+      <div class="works-grid">
+        <div class="work w-big reveal"><img src="assets/cvc_keyart.jpg" alt="Cat vs Cucumber key art"/><span class="wtag">Cat vs Cucumber · Key art</span></div>
+        <div class="work w-tall reveal d1"><img src="assets/art_mage.jpg" alt="Mage character design"/><span class="wtag">Character design</span></div>
+        <div class="work reveal d2"><img src="assets/art_king.jpg" alt="Garuda boss concept"/><span class="wtag">Boss concept</span></div>
+        <div class="work w-wide reveal"><img src="assets/art_moba.jpg" alt="MOBA-scale splash art"/><span class="wtag">MOBA-scale splash</span></div>
+        <div class="work reveal d1"><img src="assets/art_owl.jpg" alt="Creature boss art"/><span class="wtag">Creature art</span></div>
+        <div class="work w-wide reveal d2"><img src="assets/art_mech.jpg" alt="Mech character sheet"/><span class="wtag">3D character sheet</span></div>
+      </div>
+
+      <!-- affiliate platform -->
+      <div style="margin-top:64px" class="reveal">
+        <span class="eyebrow">Platform</span>
+        <h2 class="sect">Game Affiliate Platform</h2>
+        <p class="sect-lead">Beyond building games, we ship the infrastructure around them — a publishing &amp; referral platform that turns gaming content into revenue, with real-time analytics, custom affiliate links, and performance-based earnings.</p>
+      </div>
+      <div class="usp-grid" style="margin-top:34px">
+        <div class="card reveal d1"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 9h16"/></svg></div><h3>Publishing dashboard</h3><p>Revenue, retention, and install analytics — daily to yearly — across every published title.</p></div>
+        <div class="card reveal d2"><div class="ic"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1"/><path d="M14 11a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1"/></svg></div><h3>Custom affiliate links</h3><p>Per-creator tracking links and approval flows so partners can promote titles they care about.</p></div>
+        <div class="card reveal d3"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v20M5 6h11a3 3 0 010 6H7a3 3 0 000 6h12"/></svg></div><h3>Performance earnings</h3><p>Referral commission, top-up tracking, and bonus events with transparent real-time reporting.</p></div>
+      </div>
+
+      <!-- customers -->
+      <div style="margin-top:64px" class="reveal">
+        <span class="eyebrow">Our customers</span>
+        <h2 class="sect">Trusted by global brands<br>&amp; gaming ecosystems.</h2>
+        <p class="sect-lead">From AR experiences for global consumer brands to integrations across major platform and Web3 ecosystems — shipped end-to-end.</p>
+      </div>
+      <div class="cust-row reveal d1">
+        <span class="cchip"><span class="sq"></span>Pepsi</span>
+        <span class="cchip"><span class="sq"></span>Major Cineplex</span>
+        <span class="cchip"><span class="sq"></span>Paragon Cineplex</span>
+        <span class="cchip"><span class="sq"></span>Quartier CineArt</span>
+        <span class="cchip"><span class="sq"></span>Sony</span>
+        <span class="cchip"><span class="sq"></span>Soneium</span>
+        <span class="cchip"><span class="sq"></span>LINE Mini Dapp</span>
+        <span class="cchip"><span class="sq"></span>Dapp Portal</span>
+        <span class="cchip"><span class="sq"></span>Evermoon</span>
+      </div>
+      <div class="ar-row reveal d2">
+        <div class="ar-card"><img src="assets/ar1.jpg" alt="AR brand experience"/><span class="arc">AR · Major Cineplex</span></div>
+        <div class="ar-card"><img src="assets/ar2.jpg" alt="AR brand experience"/><span class="arc">AR · Cineplex campaign</span></div>
+        <div class="ar-card"><img src="assets/ar3.jpg" alt="AR vending experience"/><span class="arc">AR · Pepsi activation</span></div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============================================================= -->
+<!-- ===== PAGE: TEAM ===== -->
+<!-- ============================================================= -->
+<section class="page" id="page-team">
+  <div class="page-head"><div class="wrap reveal">
+    <span class="eyebrow">Core team</span>
+    <h2 class="sect">Operators who've shipped<br>across product, capital &amp; brand.</h2>
+    <p class="sect-lead">A multi-discipline founding team backed by a full studio of engineers, artists, and UX specialists.</p>
+  </div></div>
+
+  <section class="section-pad" style="padding-top:46px">
+    <div class="wrap">
+      <div class="team-grid">
+        <div class="member reveal d1">
+          <div class="ph"><img src="assets/ceo.jpg" alt="Patipol Anantarattana"/></div>
+          <div class="body">
+            <div class="nm">Patipol Anantarattana</div><div class="role">CEO</div>
+            <div class="skills"><span>Business strategy</span><span>Game design</span><span>Production</span><span>Marketing</span></div>
+            <p>Multi-discipline founder bridging product, creative, and go-to-market from a single seat. MUICT guest lecturer in Gaming &amp; E-Sports, Bitkub fintech experience, $1M-revenue startup founder.</p>
+          </div>
+        </div>
+        <div class="member reveal d2">
+          <div class="ph"><img src="assets/cto.jpg" alt="Tanachot Anantarattana"/></div>
+          <div class="body">
+            <div class="nm">Tanachot Anantarattana</div><div class="role">CTO · CFO</div>
+            <div class="skills"><span>AI systems</span><span>Web infrastructure</span><span>Finance</span><span>Accounting</span></div>
+            <p>Technical-financial hybrid. Ran operations for a $30M+ HK private fund, now architecting scalable backends and robust LTV financial models. Serial 0→1 operator.</p>
+          </div>
+        </div>
+        <div class="member reveal d3">
+          <div class="ph"><img src="assets/cmo.jpg" alt="Suphitcha Latthikul"/></div>
+          <div class="body">
+            <div class="nm">Suphitcha Latthikul</div><div class="role">CMO</div>
+            <div class="skills"><span>Marketing strategy</span><span>Campaign management</span><span>UA</span></div>
+            <p>Large-scale campaign expertise across retail, property, and digital — The Mall Group, Singha Estate, and a Meta Certified Marketer. TikTok creator &amp; corporate modeling experience.</p>
+          </div>
+        </div>
+      </div>
+      <p class="team-note">Backed by a full studio: <b>game development</b>, <b>art &amp; animation</b>, and <b>engineering &amp; UX</b> — concept to live ops, in-house.</p>
+
+      <div class="studio-photos reveal">
+        <figure><img src="assets/office_team.jpg" alt="The studio"/><figcaption>Sea-view HQ</figcaption></figure>
+        <figure><img src="assets/office_dev.jpg" alt="Engineering"/><figcaption>Build in progress</figcaption></figure>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- ============================================================= -->
+<!-- ===== PAGE: PARTNER ===== -->
+<!-- ============================================================= -->
+<section class="page" id="page-partner">
+  <div class="page-head"><div class="wrap reveal">
+    <span class="eyebrow">We're looking for collaborations</span>
+    <h2 class="sect">Let's connect players<br>worldwide — together.</h2>
+    <p class="sect-lead">Whether you publish, acquire users, or invest — there's a way to build with View Passion.</p>
+  </div></div>
+
+  <section class="section-pad" style="padding-top:46px">
+    <div class="wrap">
+      <div class="collab">
+        <div class="copp reveal d1" data-open-modal data-subject="Publishing partnership">
+          <div class="ci"><svg viewBox="0 0 24 24"><path d="M12 2c3 3 5 7 5 11a5 5 0 01-10 0c0-4 2-8 5-11z"/><path d="M9 21h6"/></svg></div>
+          <h4>Publishing partnership</h4><p>Soft-launch to global launch &amp; LiveOps.</p>
+        </div>
+        <div class="copp reveal d2" data-open-modal data-subject="Co-marketing / UA">
+          <div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+          <h4>Co-marketing</h4><p>User-acquisition partners to scale reach.</p>
+        </div>
+        <div class="copp reveal d3" data-open-modal data-subject="Investment">
+          <div class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 12l7-7"/></svg></div>
+          <h4>Investment</h4><p>Capital to accelerate the roadmap.</p>
+        </div>
+      </div>
+
+      <div class="contact-grid reveal">
+        <a class="cline" href="mailto:info@viewpassion.com"><div class="ci"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3z"/><path d="M3 6l9 7 9-7"/></svg></div><div><div class="cl">Email</div><div class="cv">info@viewpassion.com</div></div></a>
+        <a class="cline" href="tel:+66831313018"><div class="ci"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></div><div><div class="cl">Tel</div><div class="cv">+66 83 131 3018</div></div></a>
+        <a class="cline" href="#" data-open-modal><div class="ci"><svg viewBox="0 0 24 24"><path d="M18 2h-3a4 4 0 00-4 4v3H8v4h3v8h4v-8h3l1-4h-4V6a1 1 0 011-1h3z"/></svg></div><div><div class="cl">Facebook</div><div class="cv">View Passion</div></div></a>
+        <a class="cline" href="#" data-open-modal><div class="ci"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 01-6-6h0v14a3 3 0 11-3-3"/></svg></div><div><div class="cl">TikTok</div><div class="cv">@viewpassion</div></div></a>
+      </div>
+
+      <div class="bigcta reveal">
+        <h2>Ready to ship your next hit?</h2>
+        <p>Whether you're a publisher, a UA partner, or an investor — let's talk about taking great games to players worldwide.</p>
+        <div class="hero-actions"><button class="btn btn-primary" data-open-modal>Contact the studio
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+      </div>
+    </div>
+  </section>
+</section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="assets/vp_logo.png" alt="View Passion"/>
+        <p>Gaming One Stop. We create and publish mobile games built for fun, strategy, and players worldwide.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Explore</h5>
+        <button data-go="home">Home</button>
+        <button data-go="studio">Studio</button>
+        <button data-go="game">Cat vs Cucumber</button>
+        <button data-go="works">Works</button>
+        <button data-go="team">Team</button>
+      </div>
+      <div class="foot-col">
+        <h5>Get in touch</h5>
+        <a href="mailto:info@viewpassion.com">info@viewpassion.com</a>
+        <a href="tel:+66831313018">+66 83 131 3018</a>
+        <button data-open-modal>Submit your game</button>
+        <button data-go="partner">Partnerships</button>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <small>© 2026 View Passion · Gaming One Stop. All rights reserved.</small>
+      <div class="socials">
+        <a href="#" data-open-modal aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0022 12z"/></svg></a>
+        <a href="#" data-open-modal aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16 8.2a5.8 5.8 0 003.4 1.1V6.7a3.2 3.2 0 01-3.4-3.2h-2.6v11.2a2.3 2.3 0 11-2.3-2.3c.2 0 .4 0 .6.1V9.8a5 5 0 00-.6 0 4.9 4.9 0 104.9 4.9V8.2z"/></svg></a>
+        <a href="mailto:info@viewpassion.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 6l9 7 9-7" fill="none" stroke="currentColor" stroke-width="2"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== CONTACT MODAL ===== -->
+<div class="modal-veil" id="modalVeil">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Contact View Passion">
+    <button class="x" id="modalClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <span class="eyebrow">Let's connect</span>
+    <h3>Tell us about your game</h3>
+    <p class="msub">Publisher, UA partner, or investor — drop a note and the studio will get back to you.</p>
+    <form id="contactForm">
+      <div class="field"><label for="f-name">Name</label><input id="f-name" required placeholder="Your name"/></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" type="email" required placeholder="you@studio.com"/></div>
+      <div class="field"><label for="f-topic">I'm interested in</label>
+        <select id="f-topic">
+          <option>Publishing partnership</option>
+          <option>Co-marketing / UA</option>
+          <option>Investment</option>
+          <option>Submitting a game</option>
+          <option>Cat vs Cucumber — demo access</option>
+          <option>Cat vs Cucumber — watch gameplay</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" placeholder="A few lines about what you're building or looking for…"></textarea></div>
+      <button type="submit" class="btn btn-primary">Send message
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </form>
+    <div class="modal-direct">
+      <a href="mailto:info@viewpassion.com"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3z"/><path d="M3 6l9 7 9-7"/></svg>info@viewpassion.com</a>
+      <a href="tel:+66831313018"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>+66 83 131 3018</a>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast">Message ready — opening your mail app…</div>
+
+<script>
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const PAGES = ['home','studio','game','works','team','partner'];
+  const TITLES = {home:'View Passion — Gaming One Stop',studio:'Studio — View Passion',game:'Cat vs Cucumber — View Passion',works:'Works — View Passion',team:'Team — View Passion',partner:'Partner — View Passion'};
+
+  /* ---- Nav scroll state ---- */
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('nav-scrolled', window.scrollY > 30);
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  /* ---- Mobile menu ---- */
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', ()=> navLinks.classList.toggle('mobile-open'));
+
+  /* ---- Router ---- */
+  let revealObserver;
+  function setupReveals(scope){
+    if(revealObserver) revealObserver.disconnect();
+    revealObserver = new IntersectionObserver((ents)=>{
+      ents.forEach(en=>{
+        if(en.isIntersecting){
+          en.target.classList.add('in');
+          en.target.querySelectorAll?.('[data-count]').forEach(animateCount);
+          revealObserver.unobserve(en.target);
+        }
+      });
+    },{threshold:.14, rootMargin:'0px 0px -40px 0px'});
+    scope.querySelectorAll('.reveal').forEach(el=>{ el.classList.remove('in'); revealObserver.observe(el); });
+    // hero counters (outside reveal)
+    scope.querySelectorAll('.hstat [data-count]').forEach(el=>{ el.textContent='0'; animateCount(el); });
+  }
+
+  function showPage(name, push){
+    if(!PAGES.includes(name)) name='home';
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    const el = document.getElementById('page-'+name);
+    el.classList.add('active');
+    document.querySelectorAll('.nav-links button[data-go]').forEach(b=>b.classList.toggle('active', b.dataset.go===name));
+    navLinks.classList.remove('mobile-open');
+    window.scrollTo(0,0);
+    document.title = TITLES[name]||TITLES.home;
+    setupReveals(el);
+    if(push && location.hash!=='#'+name) history.pushState({p:name},'','#'+name);
+  }
+
+  // delegate all [data-go]
+  document.addEventListener('click', e=>{
+    const go = e.target.closest('[data-go]');
+    if(go){ e.preventDefault(); showPage(go.dataset.go, true); }
+  });
+  window.addEventListener('popstate', ()=> showPage((location.hash||'#home').slice(1), false));
+
+  /* ---- Marquee ---- */
+  const mqItems = ['Pepsi','Major Cineplex','Paragon Cineplex','Quartier CineArt','Sony','Soneium','LINE Mini Dapp','Dapp Portal','Evermoon','MUICT'];
+  const track = document.getElementById('mqTrack');
+  const make = () => mqItems.map(t=>`<span class="mq-item"><span class="dot"></span>${t}</span>`).join('');
+  track.innerHTML = make()+make();
+
+  /* ---- Counters ---- */
+  function animateCount(el){
+    const target = +el.dataset.count, suf = el.dataset.suffix||'';
+    const fmt = n => (n>=1000 ? Math.round(n).toLocaleString('en-US') : Math.round(n));
+    if(reduce){ el.textContent = fmt(target)+suf; return; }
+    const dur=1300, t0=performance.now();
+    function step(t){ const p=Math.min((t-t0)/dur,1), e=1-Math.pow(1-p,3); el.textContent=fmt(target*e)+suf; if(p<1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+
+  /* ---- Card pointer glow ---- */
+  document.addEventListener('pointermove', e=>{
+    const c = e.target.closest?.('.card'); if(!c) return;
+    const r=c.getBoundingClientRect();
+    c.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+    c.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+  });
+
+  /* ---- Modal ---- */
+  const veil = document.getElementById('modalVeil');
+  const topicSel = document.getElementById('f-topic');
+  let lastFocus=null;
+  function openModal(subject){
+    lastFocus=document.activeElement;
+    veil.classList.add('open');
+    if(subject){ const opt=[...topicSel.options].find(o=>o.value===subject||o.text===subject); if(opt) topicSel.value=opt.value; }
+    document.body.style.overflow='hidden';
+    setTimeout(()=>document.getElementById('f-name').focus(),120);
+  }
+  function closeModal(){ veil.classList.remove('open'); document.body.style.overflow=''; lastFocus?.focus?.(); }
+  document.addEventListener('click', e=>{
+    const t = e.target.closest('[data-open-modal]');
+    if(t){ e.preventDefault(); openModal(t.dataset.subject); }
+  });
+  document.getElementById('modalClose').addEventListener('click',closeModal);
+  veil.addEventListener('click',e=>{ if(e.target===veil) closeModal(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&veil.classList.contains('open')) closeModal(); });
+
+  /* ---- Contact form ---- */
+  const toast=document.getElementById('toast');
+  document.getElementById('contactForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    const name=document.getElementById('f-name').value.trim();
+    const email=document.getElementById('f-email').value.trim();
+    const topic=topicSel.value;
+    const msg=document.getElementById('f-msg').value.trim();
+    const body=encodeURIComponent(`Name: ${name}\nEmail: ${email}\nInterest: ${topic}\n\n${msg}`);
+    const subject=encodeURIComponent(`[View Passion] ${topic} — ${name}`);
+    toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),3200);
+    window.location.href=`mailto:info@viewpassion.com?subject=${subject}&body=${body}`;
+    setTimeout(closeModal,400);
+  });
+
+  /* ---- Hero showcase parallax ---- */
+  if(!reduce){
+    const show=document.querySelector('.hero-show');
+    if(show) window.addEventListener('pointermove',e=>{
+      const dx=(e.clientX/window.innerWidth-.5), dy=(e.clientY/window.innerHeight-.5);
+      show.style.transform=`translate3d(${dx*-16}px,${dy*-16}px,0)`;
+    },{passive:true});
+  }
+
+  /* ---- Init ---- */
+  showPage((location.hash||'#home').slice(1), false);
+})();
+</script>
+</body>
+</html>
